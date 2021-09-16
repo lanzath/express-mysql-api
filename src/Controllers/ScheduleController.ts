@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { Schedule } from '../Models/Schedule';
 
-class ScheduleController {
+export class ScheduleController {
 
-  public newSchedule(req: Request, res: Response): Response<string> {
+  public newSchedule(req: Request, res: Response): Response {
     const { body } = req;
 
     const schedule = new Schedule();
@@ -11,5 +11,3 @@ class ScheduleController {
     return res.json(schedule.store(body)).status(201);
   }
 }
-
-export { ScheduleController };

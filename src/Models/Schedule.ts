@@ -1,7 +1,7 @@
 import { ISchedule } from '../interfaces/ISchedule';
 import connection from '../database/connection';
 
-class Schedule {
+export class Schedule {
 
   public store(schedule: ISchedule): void {
     const sql = `INSERT INTO Schedules SET ?`;
@@ -12,5 +12,3 @@ class Schedule {
     });
   }
 }
-
-export { Schedule };

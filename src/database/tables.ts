@@ -1,6 +1,6 @@
 import { Connection } from 'mysql';
 
-class Tables {
+export class Tables {
 
   constructor(private connection: Connection) {
     this.createScheduleTable();
@@ -26,5 +26,3 @@ class Tables {
     });
   }
 }
-
-export { Tables };
