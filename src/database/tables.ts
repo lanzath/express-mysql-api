@@ -14,8 +14,10 @@ export class Tables {
           customer varchar(50) NOT NULL,
           pet varchar(20),
           service varchar(20) NOT NULL,
+          date datetime NOT NULL,
           status varchar(20) NOT NULL,
           notes text,
+          createdAt timestamp NOT NULL,
           PRIMARY KEY(id)
         )
     `;
