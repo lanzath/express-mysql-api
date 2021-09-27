@@ -1,16 +1,12 @@
-// Fs ~> file system
 import fs from 'fs';
 
-// Exemplo Síncrono de escrita de dados (Utilização de buffer).
-fs.readFile('./src/assets/shippo.jpg', (err, buffer) => {
-  console.log(err);
-  console.log(buffer);
+const fileUpload = (path: string, fileName: string, imageUploadedCallback: CallableFunction) => {
+  const newPath = `./src/assets/images/${fileName}`;
 
-  fs.writeFile('./src/assets/shippo2.jpg', buffer, (err) => console.log('imagem escrita'));
-});
+  fs
+    .createReadStream(path)
+    .pipe(fs.createWriteStream(newPath))
+    .on('finish', () => imageUploadedCallback(newPath));
+}
 
-// Exemplo de leitura e escrita de dados por stream.
-fs
-  .createReadStream('./src/assets/shippo.jpg')
-  .pipe(fs.createWriteStream('./src/assets/shippo-stream.jpg'))
-  .on('finish', () => console.log('imagem escrita'));
+export default fileUpload;
